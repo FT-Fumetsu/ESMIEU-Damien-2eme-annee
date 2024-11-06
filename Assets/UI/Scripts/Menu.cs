@@ -10,7 +10,7 @@ namespace Menu
         [SerializeField] private GameObject _optionsMenu;
         [SerializeField] private GameObject _inventoryMenu;
 
-        [SerializeField] private GameObject _pauseFirstButton, _optionsFirstButton, _optionsClosedButton, _inventoryFirstButton;
+        [SerializeField] private GameObject _pauseFirstButton, _optionsFirstButton, _optionsClosedButton, _inventoryFirstButton, _inventoryClosedButton;
 
         private void Start()
         {
@@ -42,6 +42,9 @@ namespace Menu
                 {
                     _inventoryMenu.SetActive(false);
                     _echapMenu.SetActive(true);
+
+                    //set a new selected object
+                    EventSystem.current.SetSelectedGameObject(_inventoryClosedButton);
                 }
 
                 else
