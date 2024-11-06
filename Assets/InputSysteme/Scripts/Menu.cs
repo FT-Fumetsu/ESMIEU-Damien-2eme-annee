@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Menu
 {
@@ -19,10 +20,23 @@ namespace Menu
             _inventoryMenu.SetActive(false);
         }
 
-        private void Update()
+        public void OpenMenu(InputAction.CallbackContext context)
         {
-            if (Input.GetKeyDown(_echap))
+            if (context.started)
             {
+                Debug.Log("Echap Menu" + context.phase);
+                _echapMenu.SetActive(true);
+
+                //set a new selected object
+                EventSystem.current.SetSelectedGameObject(_pauseFirstButton);
+            }
+        }
+
+        public void BackInMenu(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                Debug.Log("Back In Menu" + context.phase);
                 if (_echapMenu.activeInHierarchy)
                 {
                     Debug.Log("Echap Menu true to false");
@@ -46,16 +60,6 @@ namespace Menu
                     //set a new selected object
                     EventSystem.current.SetSelectedGameObject(_inventoryClosedButton);
                 }
-
-                else
-                {
-                    Debug.Log("Echap Menu false to true");
-                    _echapMenu.SetActive(true);
-
-                    //set a new selected object
-                    EventSystem.current.SetSelectedGameObject(_pauseFirstButton);
-                }
-
             }
         }
 
