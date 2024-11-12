@@ -5510,16 +5510,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a30f4e6c4f35345af9ad8e2cfbfa71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _openPauseMenu: 0
-  _backInMenu: 0
-  _echapMenuGameObject: {fileID: 0}
-  _optionsMenuGameObject: {fileID: 0}
-  _inventoryMenuGameObject: {fileID: 0}
-  _pauseFirstButtonGameObject: {fileID: 0}
-  _optionsFirstButtonGameObject: {fileID: 0}
-  _optionsClosedButtonGameObject: {fileID: 0}
-  _inventoryFirstButtonGameObject: {fileID: 0}
-  _inventoryClosedButtonGameObject: {fileID: 0}
+  _openPauseMenuBackInMenu: 27
+  _pauseMenuGameObject: {fileID: 1916844834}
+  _optionsMenuGameObject: {fileID: 327860246}
+  _inventoryMenuGameObject: {fileID: 673206344}
+  _pauseFirstButtonGameObject: {fileID: 57953567}
+  _optionsFirstButtonGameObject: {fileID: 1975154490}
+  _optionsClosedButtonGameObject: {fileID: 2131422024}
+  _inventoryFirstButtonGameObject: {fileID: 249801114}
+  _inventoryClosedButtonGameObject: {fileID: 57953567}
 --- !u!4 &1845495798
 Transform:
   m_ObjectHideFlags: 0
@@ -6018,8 +6017,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2131422025}
   - {fileID: 57953568}
+  - {fileID: 2131422025}
   - {fileID: 527214505}
   - {fileID: 1840994994}
   m_Father: {fileID: 0}

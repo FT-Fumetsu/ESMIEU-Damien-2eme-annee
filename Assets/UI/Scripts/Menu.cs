@@ -5,9 +5,8 @@ namespace Menu
 {
     public class PauseMenu : MonoBehaviour
     {
-        [SerializeField] private KeyCode _openPauseMenu;
-        [SerializeField] private KeyCode _backInMenu;
-        [SerializeField] private GameObject _echapMenuGameObject;
+        [SerializeField] private KeyCode _openPauseMenuBackInMenu;
+        [SerializeField] private GameObject _pauseMenuGameObject;
         [SerializeField] private GameObject _optionsMenuGameObject;
         [SerializeField] private GameObject _inventoryMenuGameObject;
 
@@ -15,37 +14,25 @@ namespace Menu
 
         private void Start()
         {
-            _echapMenuGameObject.SetActive(false);
+            _pauseMenuGameObject.SetActive(false);
             _optionsMenuGameObject.SetActive(false);
             _inventoryMenuGameObject.SetActive(false);
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(_openPauseMenu))
+            if (Input.GetKeyDown(_openPauseMenuBackInMenu))
             {
-                if(!_echapMenuGameObject.activeInHierarchy)
-                {
-                    Debug.Log("Echap Menu false to true");
-                    _echapMenuGameObject.SetActive(true);
-
-                    //set a new selected object
-                    EventSystem.current.SetSelectedGameObject(_pauseFirstButtonGameObject);
-                }                
-            }
-
-            if (Input.GetKeyDown(_backInMenu))
-            {
-                if (_echapMenuGameObject.activeInHierarchy)
+                if (_pauseMenuGameObject.activeInHierarchy)
                 {
                     Debug.Log("Echap Menu true to false");
-                    _echapMenuGameObject.SetActive(false);
+                    _pauseMenuGameObject.SetActive(false);
                 }
 
                 else if (_optionsMenuGameObject.activeInHierarchy)
                 {
                     _optionsMenuGameObject.SetActive(false);
-                    _echapMenuGameObject.SetActive(true);
+                    _pauseMenuGameObject.SetActive(true);
 
                     //set a new selected object
                     EventSystem.current.SetSelectedGameObject(_optionsClosedButtonGameObject);
@@ -54,18 +41,27 @@ namespace Menu
                 else if (_inventoryMenuGameObject.activeInHierarchy)
                 {
                     _inventoryMenuGameObject.SetActive(false);
-                    _echapMenuGameObject.SetActive(true);
+                    _pauseMenuGameObject.SetActive(true);
 
                     //set a new selected object
                     EventSystem.current.SetSelectedGameObject(_inventoryClosedButtonGameObject);
                 }
+
+                else 
+                {
+                    Debug.Log("Echap Menu false to true");
+                    _pauseMenuGameObject.SetActive(true);
+
+                    //set a new selected object
+                    EventSystem.current.SetSelectedGameObject(_pauseFirstButtonGameObject);
+                }                
             }
         }
 
         public void OpenInventory()
         {
             _inventoryMenuGameObject.SetActive(true);
-            _echapMenuGameObject.SetActive(false);
+            _pauseMenuGameObject.SetActive(false);
 
             //set a new selected object
             EventSystem.current.SetSelectedGameObject(_inventoryFirstButtonGameObject);
@@ -74,7 +70,7 @@ namespace Menu
         public void OpenOptions()
         {
             _optionsMenuGameObject.SetActive(true);
-            _echapMenuGameObject.SetActive(false);
+            _pauseMenuGameObject.SetActive(false);
 
             //set a new selected object
             EventSystem.current.SetSelectedGameObject(_optionsFirstButtonGameObject);
