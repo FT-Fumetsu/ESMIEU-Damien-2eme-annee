@@ -11,7 +11,6 @@ namespace Menu
 
         private void Update()
         {
-
             for (int i = 0; i < _content.childCount; i++)
             {
                 GameObject item = _content.GetChild(i).gameObject;
@@ -19,7 +18,6 @@ namespace Menu
                 {
                     float normalizedPosition = 1 - (float)i / (_content.childCount - 1);
                     _scrollRect.verticalNormalizedPosition = normalizedPosition;
-                    break;
                 }
             }
         }
