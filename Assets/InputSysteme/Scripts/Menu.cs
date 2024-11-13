@@ -1,23 +1,26 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Input;
 
 namespace Menu
 {
-    public class PauseMenu : MonoBehaviour
+    public class Menu : MonoBehaviour
     {
-        [SerializeField] private KeyCode _echap;
-        [SerializeField] private GameObject _echapMenu;
-        [SerializeField] private GameObject _optionsMenu;
-        [SerializeField] private GameObject _inventoryMenu;
+        [Header("Menu References")]
+        [SerializeField] private GameObject _pauseMenuGameObject;
+        [SerializeField] private GameObject _optionsMenuGameObject;
+        [SerializeField] private GameObject _inventoryMenuGameObject;
+        [SerializeField] private GameObject _pauseFirstButtonGameObject, _optionsFirstButtonGameObject, _optionsClosedButtonGameObject, _inventoryFirstButtonGameObject, _inventoryClosedButtonGameObject;
 
-        [SerializeField] private GameObject _pauseFirstButton, _optionsFirstButton, _optionsClosedButton, _inventoryFirstButton, _inventoryClosedButton;
+        [Header("Scripts References")]
+        [SerializeField] private SwitchActionMap _switchActionMap;
 
         private void Start()
         {
-            _echapMenu.SetActive(false);
-            _optionsMenu.SetActive(false);
-            _inventoryMenu.SetActive(false);
+            _pauseMenuGameObject.SetActive(false);
+            _optionsMenuGameObject.SetActive(false);
+            _inventoryMenuGameObject.SetActive(false);
         }
 
         public void OpenMenu(InputAction.CallbackContext context)
@@ -25,10 +28,10 @@ namespace Menu
             if (context.started)
             {
                 Debug.Log("Echap Menu" + context.phase);
-                _echapMenu.SetActive(true);
+                _pauseMenuGameObject.SetActive(true);
 
                 //set a new selected object
-                EventSystem.current.SetSelectedGameObject(_pauseFirstButton);
+                EventSystem.current.SetSelectedGameObject(_pauseFirstButtonGameObject);
             }
         }
 
@@ -36,49 +39,65 @@ namespace Menu
         {
             if (context.started)
             {
-                Debug.Log("Back In Menu" + context.phase);
-                if (_echapMenu.activeInHierarchy)
+                if (_pauseMenuGameObject.activeInHierarchy)
                 {
-                    Debug.Log("Echap Menu true to false");
-                    _echapMenu.SetActive(false);
+                    ClosePauseMenu();
                 }
 
-                else if (_optionsMenu.activeInHierarchy)
+                else if (_optionsMenuGameObject.activeInHierarchy)
                 {
-                    _optionsMenu.SetActive(false);
-                    _echapMenu.SetActive(true);
-
-                    //set a new selected object
-                    EventSystem.current.SetSelectedGameObject(_optionsClosedButton);
+                    CloseOptionMenu();
                 }
 
-                else if (_inventoryMenu.activeInHierarchy)
+                else if (_inventoryMenuGameObject.activeInHierarchy)
                 {
-                    _inventoryMenu.SetActive(false);
-                    _echapMenu.SetActive(true);
-
-                    //set a new selected object
-                    EventSystem.current.SetSelectedGameObject(_inventoryClosedButton);
+                    CloseInventoryMenu();
                 }
             }
         }
 
         public void OpenInventory()
         {
-            _inventoryMenu.SetActive(true);
-            _echapMenu.SetActive(false);
+            _inventoryMenuGameObject.SetActive(true);
+            _pauseMenuGameObject.SetActive(false);
 
             //set a new selected object
-            EventSystem.current.SetSelectedGameObject(_inventoryFirstButton);
+            EventSystem.current.SetSelectedGameObject(_inventoryFirstButtonGameObject);
         }
 
         public void OpenOptions()
         {
-            _optionsMenu.SetActive(true);
-            _echapMenu.SetActive(false);
+            _optionsMenuGameObject.SetActive(true);
+            _pauseMenuGameObject.SetActive(false);
 
             //set a new selected object
-            EventSystem.current.SetSelectedGameObject(_optionsFirstButton);
+            EventSystem.current.SetSelectedGameObject(_optionsFirstButtonGameObject);
+        }
+
+        public void ClosePauseMenu()
+        {
+            Debug.Log("Echap Menu true to false");
+            _pauseMenuGameObject.SetActive(false);
+
+            _switchActionMap.SwitchOnPlayerActionMap();
+        }
+
+        private void CloseOptionMenu()
+        {
+            _optionsMenuGameObject.SetActive(false);
+            _pauseMenuGameObject.SetActive(true);
+
+            //set a new selected object
+            EventSystem.current.SetSelectedGameObject(_optionsClosedButtonGameObject);
+        }
+
+        private void CloseInventoryMenu()
+        {
+            _inventoryMenuGameObject.SetActive(false);
+            _pauseMenuGameObject.SetActive(true);
+
+            //set a new selected object
+            EventSystem.current.SetSelectedGameObject(_inventoryClosedButtonGameObject);
         }
     }
 }
