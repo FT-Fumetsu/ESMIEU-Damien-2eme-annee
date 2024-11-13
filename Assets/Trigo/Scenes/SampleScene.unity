@@ -153,9 +153,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _color: {r: 1, g: 1, b: 1, a: 1}
   _startingColor: {r: 1, g: 1, b: 1, a: 1}
-  _finalColor: {r: 0.10099889, g: 0.3433962, b: 0, a: 1}
-  _centerCircle: {fileID: 217581264}
+  _pointColor: {r: 0.006648419, g: 0.3735848, b: 0, a: 1}
+  _gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  _hollowPurple: {r: 0, g: 0, b: 0, a: 0}
   _otherPoint: {fileID: 1336420221}
+  _otherCircle: {fileID: 1599505860}
+  _otherCenter: {fileID: 1599505861}
+  _centerCircle: {fileID: 217581264}
   _circleRadius: 10
 --- !u!4 &217581264
 Transform:
@@ -166,7 +170,7 @@ Transform:
   m_GameObject: {fileID: 217581262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -501,7 +505,7 @@ Transform:
   m_GameObject: {fileID: 1336420220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.2, y: 35.6, z: 0}
+  m_LocalPosition: {x: 73.7, y: 16.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -538,9 +542,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _color: {r: 1, g: 1, b: 1, a: 1}
   _startingColor: {r: 1, g: 1, b: 1, a: 1}
-  _finalColor: {r: 0.10099889, g: 0.3433962, b: 0, a: 1}
-  _centerCircle: {fileID: 1599505861}
+  _pointColor: {r: 1, g: 0, b: 0.74623585, a: 1}
+  _gizmoColor: {r: 0, g: 0.08129978, b: 1, a: 1}
+  _hollowPurple: {r: 0, g: 0, b: 0, a: 0}
   _otherPoint: {fileID: 1336420221}
+  _otherCircle: {fileID: 217581263}
+  _otherCenter: {fileID: 217581264}
+  _centerCircle: {fileID: 1599505861}
   _circleRadius: 10
 --- !u!4 &1599505861
 Transform:
@@ -551,7 +559,7 @@ Transform:
   m_GameObject: {fileID: 1599505859}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.2, y: 0, z: 0}
+  m_LocalPosition: {x: 65.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
