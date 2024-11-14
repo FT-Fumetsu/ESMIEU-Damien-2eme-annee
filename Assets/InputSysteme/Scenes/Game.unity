@@ -1171,7 +1171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e093f9b62dc7bd47af6f73a176cb3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeBeforeShoot: 0
+  _timeBeforeShoot: 0.5
+  _chrono: 0
   _bullet: {fileID: 3229929773714142642, guid: b5b36d8a453961c459664c21223c8fdc, type: 3}
   _bulletSpawnPosition: {fileID: 3474335593325120998, guid: b5b36d8a453961c459664c21223c8fdc,
     type: 3}
