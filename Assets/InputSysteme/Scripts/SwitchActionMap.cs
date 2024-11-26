@@ -11,15 +11,15 @@ namespace Input
         {
             if (context.started)
             {
-                _playerInput.actions.FindActionMap("MenuInput").Enable();
-                _playerInput.actions.FindActionMap("Player").Disable();
+                _playerInput.actions.FindActionMap("UI").Enable();
+                _playerInput.actions.FindActionMap("Game").Disable();
             }
         }
 
         public void SwitchOnPlayerActionMap()
         {
-            _playerInput.actions.FindActionMap("MenuInput").Disable();
-            _playerInput.actions.FindActionMap("Player").Enable();
+            _playerInput.actions.FindActionMap("UI").Disable();
+            _playerInput.actions.FindActionMap("Game").Enable();
         }
     }
 }
