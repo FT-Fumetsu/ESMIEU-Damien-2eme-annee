@@ -11,7 +11,11 @@ namespace Menu
         [SerializeField] private GameObject _pauseMenuGameObject;
         [SerializeField] private GameObject _optionsMenuGameObject;
         [SerializeField] private GameObject _inventoryMenuGameObject;
-        [SerializeField] private GameObject _pauseFirstButtonGameObject, _optionsFirstButtonGameObject, _optionsClosedButtonGameObject, _inventoryFirstButtonGameObject, _inventoryClosedButtonGameObject;
+        [SerializeField] private GameObject _pauseFirstButtonGameObject;
+        [SerializeField] private GameObject _optionsFirstButtonGameObject;
+        [SerializeField] private GameObject _optionsClosedButtonGameObject;
+        [SerializeField] private GameObject _inventoryFirstButtonGameObject;
+        [SerializeField] private GameObject _inventoryClosedButtonGameObject;
 
         [Header("Scripts References")]
         [SerializeField] private SwitchActionMap _switchActionMap;

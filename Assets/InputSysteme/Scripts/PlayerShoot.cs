@@ -5,7 +5,7 @@ namespace Player
 {
     public class PlayerShoot : MonoBehaviour
     {
-        [SerializeField] private float _timeBeforeShoot = 0.5f;
+        [SerializeField] private float _fireRate = 0.5f;
         [SerializeField] private float _chrono = 0;
         [SerializeField] private GameObject _bullet;
         [SerializeField] private Transform _bulletSpawnPosition;
@@ -21,7 +21,7 @@ namespace Player
         {
             if (context.started)
             {
-                if (_chrono >= _timeBeforeShoot)
+                if (_chrono >= _fireRate)
                 {
                     Instantiate(_bullet, _bulletSpawnPosition);
                     _chrono = 0f;
