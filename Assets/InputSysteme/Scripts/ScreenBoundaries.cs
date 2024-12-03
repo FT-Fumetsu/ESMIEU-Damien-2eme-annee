@@ -15,7 +15,7 @@ namespace Boundaries
         //    _objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
         //}
 
-        //private void LateUpdate()
+        //private void FixedUpdate()
         //{
         //    Vector2 viewPos = transform.position;
         //    viewPos.x = Mathf.Clamp(viewPos.x, _screenBounds.x + _objectWidth, _screenBounds.x * - _objectWidth);
