@@ -10,7 +10,6 @@ public class SwitchColorOfGizmo : MonoBehaviour
     [SerializeField] private Transform _otherPoint;
     [SerializeField] private SwitchColorOfGizmo _otherCircle;
     [SerializeField] private Transform _otherCenter;
-    //[SerializeField] private Transform _centerCircle;
     [SerializeField, Range (0, 10)] public float _circleRadius;
 
     public float Radius => _circleRadius;

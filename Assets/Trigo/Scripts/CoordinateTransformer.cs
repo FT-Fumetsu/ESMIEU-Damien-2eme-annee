@@ -1,38 +1,55 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class CoordinateTransformer : MonoBehaviour
 {
-    public Vector3 LocalToWorld(Vector3 localPoint)
+    [SerializeField] private bool _localCoordonatesBool;
+    [SerializeField] private GameObject _gameObjectReference;
+
+
+    private void OnDrawGizmos()
     {
-        Vector3 localRight = transform.right;
-        Vector3 localUp = transform.up;
-        Vector3 localForward = Vector3.Cross(localRight, localUp);
+        Vector2 worldPoint = _gameObjectReference.transform.position;
+        Vector2 localCoordonates = WorldToLocal(worldPoint);
 
-        Vector3 globalOrigin = transform.position;
+        Vector2 worldCoordonates = LocalToWorld(localCoordonates);
 
-        Vector3 globalPoint =
+        if (_localCoordonatesBool)
+        {
+            Debug.Log("Local Coordonates : " + localCoordonates);
+        }
+        else
+        {
+            Debug.Log("World Coordonates : " + worldCoordonates);
+        }
+    }
+    public Vector2 LocalToWorld(Vector2 localPoint)
+    {
+        Vector2 localRight = transform.right;
+        Vector2 localUp = transform.up;
+
+        Vector2 globalOrigin = transform.position;
+
+        Vector2 globalPoint =
             globalOrigin +
             localPoint.x * localRight +
-            localPoint.y * localUp +
-            localPoint.z * localForward;
+            localPoint.y * localUp;
 
         return globalPoint;
     }
 
-    public Vector3 WorldToLocal(Vector3 globalPoint)
+    public Vector2 WorldToLocal(Vector2 globalPoint)
     {
-        Vector3 localRight = transform.right;
-        Vector3 localUp = transform.up;
-        Vector3 localForward = Vector3.Cross(localRight, localUp);
+        Vector2 localRight = transform.right;
+        Vector2 localUp = transform.up;
 
-        Vector3 globalOrigin = transform.position;
+        Vector2 globalOrigin = transform.position;
 
-        Vector3 offset = globalPoint - globalOrigin;
+        Vector2 offset = globalOrigin - globalPoint;
 
-        float localX = Vector3.Dot(offset, localRight);
-        float localY = Vector3.Dot(offset, localUp);
-        float localZ = Vector3.Dot(offset, localForward);
+        float localX = Vector2.Dot(offset, localRight);
+        float localY = Vector2.Dot(offset, localUp);
 
-        return new Vector3(localX, localY, localZ);
+        return new Vector3(localX, localY);
     }
-}
+}   
