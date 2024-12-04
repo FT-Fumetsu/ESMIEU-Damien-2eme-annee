@@ -10,7 +10,7 @@ public class SwitchColorOfGizmo : MonoBehaviour
     [SerializeField] private Transform _otherPoint;
     [SerializeField] private SwitchColorOfGizmo _otherCircle;
     [SerializeField] private Transform _otherCenter;
-    [SerializeField] private Transform _centerCircle;
+    //[SerializeField] private Transform _centerCircle;
     [SerializeField, Range (0, 10)] public float _circleRadius;
 
     public float Radius => _circleRadius;
@@ -18,7 +18,7 @@ public class SwitchColorOfGizmo : MonoBehaviour
     private void DrawCircle()
     {
         Gizmos.color = _color;  
-        Gizmos.DrawSphere(_centerCircle.position, _circleRadius);
+        Gizmos.DrawSphere(transform.position, _circleRadius);
 
         ChangeColorOnCollidePoint();
 
@@ -32,7 +32,7 @@ public class SwitchColorOfGizmo : MonoBehaviour
 
     private void ChangeColorOnCollidePoint()
     {
-        Vector3 vectorCenterOtherPoint = _otherPoint.position - _centerCircle.position;
+        Vector3 vectorCenterOtherPoint = _otherPoint.position - transform.position;
         float sqrVectorCenterPoint = vectorCenterOtherPoint.sqrMagnitude;
         if (sqrVectorCenterPoint <= _circleRadius * _circleRadius)
         {
@@ -46,7 +46,7 @@ public class SwitchColorOfGizmo : MonoBehaviour
 
     private void ChangeColorOnCollideGizmo()
     {
-        Vector3 vectorCenterOtherGizmo = _otherCenter.position - _centerCircle.position;
+        Vector3 vectorCenterOtherGizmo = _otherCenter.position - transform.position;
         float sqrVectorCenterGizmo = vectorCenterOtherGizmo.sqrMagnitude;
         if (sqrVectorCenterGizmo <= (_circleRadius + _otherCircle.Radius) * (_circleRadius + _otherCircle.Radius))
         {
@@ -60,7 +60,7 @@ public class SwitchColorOfGizmo : MonoBehaviour
 
     //private void ChangeColorOnCollidePointMathf()
     //{
-    //    Vector3 vectorCenterOtherPoint = _otherPoint.position - _centerCircle.position;
+    //    Vector3 vectorCenterOtherPoint = _otherPoint.position - transform.position;
     //    float sqrVectorCenterPoint = Mathf.Sqrt((vectorCenterOtherPoint.x * vectorCenterOtherPoint.x) + (vectorCenterOtherPoint.y * vectorCenterOtherPoint.y));
     //    Debug.Log(sqrVectorCenterPoint + " + " + _circleRadius);
 
@@ -77,7 +77,7 @@ public class SwitchColorOfGizmo : MonoBehaviour
 
     //private void ChangeColorOnCollideGizmoMathf()
     //{
-    //    Vector3 vectorCenterOtherGizmo = _otherCenter.position - _centerCircle.position;
+    //    Vector3 vectorCenterOtherGizmo = _otherCenter.position - transform.position;
     //    float sqrVectorCenterGizmo = Mathf.Sqrt((vectorCenterOtherGizmo.x * vectorCenterOtherGizmo.x) + (vectorCenterOtherGizmo.y * vectorCenterOtherGizmo.y));
 
     //    //Debug.Log(_circleRadius + _otherCircle.Radius);

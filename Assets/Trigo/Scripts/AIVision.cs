@@ -1,29 +1,28 @@
+using System;
+using UnityEditor;
 using UnityEngine;
 
-public class AIVision : MonoBehaviour
+namespace IA
 {
-    [Header("Vision Settings")]
-    [SerializeField, Range(0f, 1f)] private float _visionLimit = 0.5f;
-
-    [SerializeField] private GameObject _targetGameObject;
-    [SerializeField] private GameObject _self;
-    [SerializeField] private Color _seeTarget;
-    [SerializeField] private Color _dontSeeTarget;
-
-    private void OnDrawGizmos()
+    public class AIVision : MonoBehaviour
     {
-        Gizmos.DrawSphere(_self.transform.position, 1);
+        [SerializeField] private Transform _target;
+        [SerializeField, Range(0, 10)] private float _circleRadius;
+        [SerializeField, Range(0, 180)] private float _viewAngle;
 
-        Vector3 directionToTarget = (_targetGameObject.transform.position - transform.position).normalized;
-        Vector3 rightVector = transform.right;
-        float dotProduct = Vector3.Dot(rightVector, directionToTarget);
-        if (dotProduct >= _visionLimit)
+        private void OnDrawGizmos()
         {
-            Gizmos.color = _seeTarget;
-        }
-        else
-        {
-            Gizmos.color = _dontSeeTarget;
+            Vector3 distance = _target.position - transform.position;
+
+            if (distance.sqrMagnitude < _circleRadius * _circleRadius)
+            {
+                if (Vector3.Dot(distance.normalized, transform.right) <= (_viewAngle - 180) / 180)
+                {
+                    Handles.color = Color.green;
+                }
+            }
+
+            Handles.DrawWireDisc(transform.position, transform.forward, _circleRadius);
         }
     }
 }
