@@ -47,12 +47,12 @@ namespace Coordinates
 
             Vector2 globalOrigin = transform.position;
 
-            Vector2 offset = globalOrigin - globalPoint;
+            Vector2 offset = globalPoint - globalOrigin;
 
             float localX = Vector2.Dot(offset, localRight);
             float localY = Vector2.Dot(offset, localUp);
 
-            return new Vector3(localX, localY);
+            return new Vector2(localX, localY);
         }
     }
 }
