@@ -11,7 +11,7 @@ namespace Player
         [SerializeField] private Transform _bulletSpawnPosition;
         [SerializeField] private PlayerMovement _player;
 
-        void Update()
+        private void Update()
         {
             _bulletSpawnPosition = _player.transform;
             _chrono += Time.deltaTime;

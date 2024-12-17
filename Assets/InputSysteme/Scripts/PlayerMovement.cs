@@ -9,7 +9,7 @@ namespace Player
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Vector2 _moveInput;
 
-        void Update()
+        private void Update()
         {
             _rigidbody.velocity = _moveInput * _speed;
         }

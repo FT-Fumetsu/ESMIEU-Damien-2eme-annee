@@ -9,7 +9,7 @@ namespace Bullet
         [SerializeField] private float _chrono;
         [SerializeField] private float _bulletLifeTime = 4f;
 
-        void Update()
+        private void Update()
         {
             _rigidbody.velocity = new Vector2(0, _bulletSpeed);
             _chrono += Time.deltaTime;
